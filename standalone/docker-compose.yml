@@ -33,6 +33,7 @@ services:
       - 9083:9083
     depends_on:
       - mysql
+      - minio
 
   spark-master:
     <<: *spark-common
