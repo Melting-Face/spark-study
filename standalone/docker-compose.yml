@@ -11,9 +11,10 @@ x-spark-common: &spark-common
   build: spark/dockerfile.d
   env_file: ./.env
   volumes:
-    - ./spark/logs:/opt/spark/logs
-    - ./tmp:/tmp
+    - ./spark_logs:/opt/spark/logs
+    - ./spark_events:/opt/spark/events
   entrypoint: ["bash", "-c"]
+  platform: linux/amd64
   user: "0"
 
 services:
@@ -28,6 +29,8 @@ services:
         -Djavax.jdo.option.ConnectionURL=jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${HIVE_DATABASE}
         -Djavax.jdo.option.ConnectionUserName=${MYSQL_USER}
         -Djavax.jdo.option.ConnectionPassword=${MYSQL_PASSWORD}
+    ports:
+      - 9083:9083
     depends_on:
       - mysql
 
@@ -38,14 +41,15 @@ services:
       - |
         /opt/spark/sbin/start-master.sh && \
         /opt/spark/sbin/start-thriftserver.sh \
-        --hiveconf hive.server2.thrift.bind.host=0.0.0.0 \
         --master spark://spark-master:7077 && \
         /opt/spark/sbin/start-history-server.sh && \
         tail -f a /opt/spark/logs/*.out
     ports:
       - 4040:4040
+      - 4041:4041
       - 7077:7077
       - 8080:8080
+      - 10000:10000
       - 18080:18080
 
   spark-worker:
@@ -60,6 +64,8 @@ services:
       - SPARK_WORKER_MEMORY=2g
       - SPARK_WORKER_PORT=7080
       - SPARK_WORKER_OPTS="-Dspark.worker.cleanup.enabled=true"
+    ports:
+      - 8081:8081
 
   mysql:
     image: mysql:${MYSQL_VERSION:-8.0.41}
