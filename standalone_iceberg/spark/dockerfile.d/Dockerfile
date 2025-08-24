@@ -1,0 +1,11 @@
+ARG SPARK_VERSION=v3.3.2
+
+FROM apache/spark-py:${SPARK_VERSION}
+
+COPY ./src $SPARK_HOME
+
+USER 0
+
+RUN sh $SPARK_HOME/setup.sh
+
+USER 185

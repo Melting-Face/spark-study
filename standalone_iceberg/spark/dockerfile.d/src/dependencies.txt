@@ -1,0 +1,5 @@
+mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar
+org/apache/iceberg/iceberg-spark-runtime-3.3_2.12/1.8.1/iceberg-spark-runtime-3.3_2.12-1.8.1.jar
+org/apache/hadoop/hadoop-aws/3.3.1/hadoop-aws-3.3.1.jar
+org/apache/hadoop/hadoop-common/3.3.1/hadoop-common-3.3.1.jar
+com/amazonaws/aws-java-sdk-bundle/1.11.901/aws-java-sdk-bundle-1.11.901.jar
