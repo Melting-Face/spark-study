@@ -2,6 +2,8 @@ ARG SPARK_VERSION=v3.3.2
 
 FROM apache/spark-py:${SPARK_VERSION}
 
+ENV PATH=$SPARK_HOME/bin:$PATH
+
 COPY ./src $SPARK_HOME
 
 USER 0
