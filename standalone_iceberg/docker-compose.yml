@@ -30,7 +30,6 @@ services:
     <<: *docker-logging
     container_name: spark-master
     build: spark/dockerfile.d
-    env_file: ./.env
     volumes:
       - ./spark_logs:/opt/spark/logs
       - ./spark_events:/opt/spark/events
