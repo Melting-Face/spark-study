@@ -1,0 +1,2 @@
+spark-nlp==6.1.2
+numpy==2.0.2
