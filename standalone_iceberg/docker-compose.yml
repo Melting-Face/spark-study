@@ -54,8 +54,8 @@ services:
       - AWS_ACCESS_KEY_ID=admin
       - AWS_SECRET_ACCESS_KEY=admin1234
       - AWS_REGION=us-east-1
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_MEMORY=2g
+      - SPARK_WORKER_CORES=4
+      - SPARK_WORKER_MEMORY=4g
       - SPARK_WORKER_PORT=7080
       - SPARK_WORKER_OPTS="-Dspark.worker.cleanup.enabled=true"
     depends_on:
@@ -66,8 +66,7 @@ services:
     container_name: minio
     build: minio/dockerfile.d
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - 9000-9001:9000-9001
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
       interval: 10s
