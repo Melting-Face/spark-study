@@ -5,4 +5,3 @@ org/apache/hadoop/hadoop-common/3.3.1/hadoop-common-3.3.1.jar
 com/amazonaws/aws-java-sdk-bundle/1.11.901/aws-java-sdk-bundle-1.11.901.jar
 org/elasticsearch/elasticsearch-spark-30_2.12/8.17.6/elasticsearch-spark-30_2.12-8.17.6.jar
 org/apache/spark/spark-sql-kafka-0-10_2.12/3.3.2/spark-sql-kafka-0-10_2.12-3.3.2.jar
-com/johnsnowlabs/nlp/spark-nlp_2.12/6.1.2/spark-nlp_2.12-6.1.2.jar

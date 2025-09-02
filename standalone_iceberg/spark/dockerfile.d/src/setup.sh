@@ -12,3 +12,5 @@ while read -r line
 do
   wget "https://repo1.maven.org/maven2/$line" -P /opt/spark/jars
 done < $SPARK_HOME/dependencies.txt
+
+wget "https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/jars/spark-nlp-aarch64-assembly-6.1.2.jar" -P /opt/spark/jars

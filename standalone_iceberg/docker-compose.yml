@@ -34,7 +34,7 @@ services:
       - ./spark_logs:/opt/spark/logs
       - ./spark_events:/opt/spark/events
     entrypoint: ["bash", "-c"]
-    platform: linux/amd64
+    platform: linux/arm64
     user: "0"
     command:
       - |
