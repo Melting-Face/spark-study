@@ -9,6 +9,7 @@ x-docker-logging: &docker-logging
 services:
   hive-metastore:
     <<: *docker-logging
+    container_name: hive
     build: hive/dockerfile.d
     environment:
       DB_DRIVER: mysql
@@ -79,6 +80,7 @@ services:
       - MINIO_ROOT_PASSWORD=admin1234
 
   mysql:
+    container_name: mysql
     image: mysql:${MYSQL_VERSION:-8.0.41}
     volumes:
       - ./mysql:/var/lib/mysql
