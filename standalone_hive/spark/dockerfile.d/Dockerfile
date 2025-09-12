@@ -1,6 +1,4 @@
-ARG SPARK_VERSION=v3.3.2
-
-FROM apache/spark-py:${SPARK_VERSION}
+FROM spark:3.5.6-scala2.12-java11-python3-ubuntu
 
 ENV PATH=$SPARK_HOME/bin:$PATH
 

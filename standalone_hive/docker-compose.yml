@@ -19,7 +19,7 @@ services:
         -Djavax.jdo.option.ConnectionURL=jdbc:mysql://mysql:3306/metastore
         -Djavax.jdo.option.ConnectionUserName=root
         -Djavax.jdo.option.ConnectionPassword=example
-      IS_RESUME: "true"
+      IS_RESUME: "false"
     platform: linux/amd64
     ports:
       - 9083:9083
