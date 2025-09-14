@@ -15,5 +15,6 @@ dependencies = [
   "thrift==0.22.0",
   "thrift-sasl==0.4.3",
   "pyspark==3.5.3",
-  "prettytable==3.6.0"
+  "prettytable==3.6.0",
+  "mlflow==3.3.2",
 ]
