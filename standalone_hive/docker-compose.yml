@@ -75,7 +75,7 @@ services:
 
   mysql:
     container_name: mysql
-    image: mysql:${MYSQL_VERSION:-8.0.41}
+    image: mysql:8.0.41
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
@@ -97,3 +97,9 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+
+  broker:
+    container_name: broker
+    image: apache/kafka:3.9.1
+    ports:
+      - 9002:9002
