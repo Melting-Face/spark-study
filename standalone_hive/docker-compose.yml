@@ -20,6 +20,8 @@ services:
         -Djavax.jdo.option.ConnectionUserName=root
         -Djavax.jdo.option.ConnectionPassword=example
       IS_RESUME: "true"
+    volumes:
+      - ./hive_log:/tmp/hive
     platform: linux/amd64
     ports:
       - 9083:9083
@@ -32,6 +34,7 @@ services:
     container_name: spark-master
     build: spark/dockerfile.d
     volumes:
+      - ./spark_tmp:/tmp
       - ./spark_logs:/opt/spark/logs
       - ./spark_events:/opt/spark/events
       - ./notebook:/opt/spark/notebook
