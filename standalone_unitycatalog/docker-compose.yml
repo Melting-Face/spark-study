@@ -1,0 +1,99 @@
+---
+x-docker-logging: &docker-logging
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"  # 로그 파일의 최대 크기 (10MB)
+      max-file: "20"  # 유지할 로그 파일 개수 (최대 10개)
+
+services:
+  server:
+    container_name: unitycatalog-server
+    <<: *docker-logging
+    image: unitycatalog/unitycatalog:v0.2.1
+    volumes:
+      - ./unitycatalog/etc/conf/hibernate.properties:/home/unitycatalog/etc/conf/hibernate.properties
+    depends_on:
+      - mysql
+      - minio
+
+  ui:
+    container_name: unitycatalog-ui
+    <<: *docker-logging
+    image: unitycatalog/unitycatalog-ui:main
+    ports:
+      - 3000:3000
+    depends_on:
+      - server
+
+  spark-master:
+    <<: *docker-logging
+    container_name: spark-master
+    build: spark/dockerfile.d
+    volumes:
+      - ./spark_tmp:/tmp
+      - ./spark_logs:/opt/spark/logs
+      - ./spark_events:/opt/spark/events
+      - ./notebook:/opt/spark/notebook
+    platform: linux/arm64
+    user: '0'
+    ports:
+      - 4040:4040
+      - 5555:5555
+      - 6066:6066
+      - 7077-7082:7077-7082
+      - 8080-8081:8080-8081
+      - 8888:8888
+      - 10000:10000
+      - 15002:15002
+      - 18080:18080
+    depends_on:
+      - server
+      - minio
+
+  minio:
+    container_name: minio
+    build: minio/dockerfile.d
+    ports:
+      - 9000-9001:9000-9001
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    volumes:
+      - ./data:/data
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=admin1234
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.41
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: metastore
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$$MYSQL_ROOT_PASSWORD",
+        ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+
+  broker:
+    container_name: broker
+    image: apache/kafka:3.9.1
+    ports:
+      - 9002:9002

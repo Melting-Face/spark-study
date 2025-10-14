@@ -1,0 +1,8 @@
+**/data/
+**/mysql/
+**/spark_events/
+**/spark_tmp/
+**/spark_logs/
+**/.ipynb_checkpoints/
+**/.Trash-0/
+**/.DS_Store

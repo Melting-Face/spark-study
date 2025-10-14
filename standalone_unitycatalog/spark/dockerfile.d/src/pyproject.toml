@@ -1,0 +1,26 @@
+[project]
+name = "spark"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "~=3.12.0"
+dependencies = [
+  "spark-nlp==6.1.2",
+  "numpy==2.2.6",
+  "delta-spark==3.3.2",
+  "jupyterlab==4.3.8",
+  "catppuccin-jupyterlab==0.2.4",
+  "ipython-sql==0.5.0",
+  "PyHive==0.7.0",
+  "thrift==0.22.0",
+  "pure-sasl==0.6.2",
+  "thrift-sasl==0.4.3",
+  "pyspark==3.5.3",
+  "prettytable==3.6.0",
+  "mlflow==3.3.2",
+  "opencv-python==4.12.0.88",
+  "grpcio-status==1.75.0",
+  "grpcio-tools==1.75.0",
+  "seaborn==0.13.2",
+  "tensorflow==2.20.0",
+]
