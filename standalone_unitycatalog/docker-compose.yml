@@ -12,6 +12,8 @@ services:
     <<: *docker-logging
     # image: unitycatalog/unitycatalog:v0.2.1
     build: unitycatalog/dockerfile.d
+    ports:
+      - 8080
     depends_on:
       - mysql
       - minio
