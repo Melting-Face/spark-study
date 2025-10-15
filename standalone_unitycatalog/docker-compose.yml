@@ -25,30 +25,29 @@ services:
     depends_on:
       - server
 
-  # spark-master:
-  #   <<: *docker-logging
-  #   container_name: spark-master
-  #   build: spark/dockerfile.d
-  #   volumes:
-  #     - ./spark_tmp:/tmp
-  #     - ./spark_logs:/opt/spark/logs
-  #     - ./spark_events:/opt/spark/events
-  #     - ./notebook:/opt/spark/notebook
-  #   platform: linux/arm64
-  #   user: '0'
-  #   ports:
-  #     - 4040:4040
-  #     - 5555:5555
-  #     - 6066:6066
-  #     - 7077-7082:7077-7082
-  #     - 8080-8081:8080-8081
-  #     - 8888:8888
-  #     - 10000:10000
-  #     - 15002:15002
-  #     - 18080:18080
-  #   depends_on:
-  #     - server
-  #     - minio
+  spark-master:
+    <<: *docker-logging
+    container_name: spark-master
+    build: spark/dockerfile.d
+    volumes:
+      - ./spark_logs:/opt/spark/logs
+      - ./spark_events:/opt/spark/events
+      - ./notebook:/opt/spark/notebook
+    platform: linux/arm64
+    user: '0'
+    ports:
+      - 4040:4040
+      - 5555:5555
+      - 6066:6066
+      - 7077-7082:7077-7082
+      - 8080-8081:8080-8081
+      - 8888:8888
+      - 10000:10000
+      - 15002:15002
+      - 18080:18080
+    depends_on:
+      - server
+      - minio
 
   minio:
     container_name: minio
@@ -91,8 +90,8 @@ services:
       start_period: 5s
     restart: always
 
-  broker:
-    container_name: broker
-    image: apache/kafka:3.9.1
-    ports:
-      - 9002:9002
+  # broker:
+  #   container_name: broker
+  #   image: apache/kafka:3.9.1
+  #   ports:
+  #     - 9002:9002
