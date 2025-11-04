@@ -22,5 +22,4 @@ dependencies = [
   "grpcio-status==1.75.0",
   "grpcio-tools==1.75.0",
   "seaborn==0.13.2",
-  "tensorflow==2.20.0",
 ]

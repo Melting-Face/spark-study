@@ -1,6 +1,6 @@
 FROM unitycatalog/unitycatalog:v0.2.1
 
-COPY ./src/etc/conf/hibernate.properties $HOME/etc/conf/hibernate.properties
+COPY ./src/etc/conf/. $HOME/etc/conf/
 
 USER 0
 
