@@ -19,7 +19,6 @@ services:
         -Djavax.jdo.option.ConnectionURL=jdbc:mysql://mysql:3306/metastore
         -Djavax.jdo.option.ConnectionUserName=root
         -Djavax.jdo.option.ConnectionPassword=example
-      IS_RESUME: "true"
     volumes:
       - ./hive_log:/tmp/hive
     platform: linux/amd64

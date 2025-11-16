@@ -1,4 +1,4 @@
-FROM apache/hive:${HIVE_VERSION:-3.1.3}
+FROM apache/hive:${HIVE_VERSION:-4.1.0}
 
 WORKDIR $HIVE_HOME
 
