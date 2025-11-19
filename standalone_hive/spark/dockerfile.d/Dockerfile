@@ -1,4 +1,4 @@
-FROM apache/spark:3.5.3
+FROM apache/spark-py:v3.3.2
 
 WORKDIR $SPARK_HOME
 

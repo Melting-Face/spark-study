@@ -5,9 +5,9 @@ io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.
 mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar
 org/apache/hadoop/hadoop-aws/3.3.1/hadoop-aws-3.3.1.jar
 org/apache/hadoop/hadoop-common/3.3.1/hadoop-common-3.3.1.jar
-org/apache/iceberg/iceberg-spark-runtime-3.5_2.12/1.8.1/iceberg-spark-runtime-3.5_2.12-1.8.1.jar
+org/apache/iceberg/iceberg-spark-runtime-3.3_2.12/1.8.1/iceberg-spark-runtime-3.3_2.12-1.8.1.jar
 org/apache/spark/spark-connect_2.12/3.5.3/spark-connect_2.12-3.5.3.jar
-org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.3/spark-sql-kafka-0-10_2.12-3.5.3.jar
+org/apache/spark/spark-sql-kafka-0-10_2.12/3.3.2/spark-sql-kafka-0-10_2.12-3.3.2.jar
 org/apache/kafka/kafka-clients/3.9.1/kafka-clients-3.9.1.jar
 org/elasticsearch/elasticsearch-spark-30_2.12/8.17.6/elasticsearch-spark-30_2.12-8.17.6.jar
 org/mlflow/mlflow-spark_2.12/3.3.2/mlflow-spark_2.12-3.3.2.jar
